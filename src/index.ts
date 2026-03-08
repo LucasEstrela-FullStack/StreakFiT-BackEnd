@@ -39,7 +39,8 @@ await app.register(fastifySwagger, {
 });
 
 await app.register(fastifyCors, {
-  origin: ["http://localhost:3000"]
+  origin: ["http://localhost:3000"],
+  credentials: true,
 });
 
 await app.register(fastifyApiReference, {
@@ -97,7 +98,7 @@ app.route({
     try {
       // Construct request URL
       const url = new URL(request.url, `http://${request.headers.host}`);
-      
+
       // Convert Fastify headers to standard Headers object
       const headers = new Headers();
       Object.entries(request.headers).forEach(([key, value]) => {
@@ -117,12 +118,12 @@ app.route({
       reply.send(response.body ? await response.text() : null);
     } catch (error) {
       app.log.error(error);
-      reply.status(500).send({ 
+      reply.status(500).send({
         error: "Internal authentication error",
-        code: "AUTH_FAILURE"
+        code: "AUTH_FAILURE",
       });
     }
-  }
+  },
 });
 
 try {
