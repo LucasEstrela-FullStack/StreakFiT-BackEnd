@@ -25,8 +25,8 @@ app.setSerializerCompiler(serializerCompiler);
 await app.register(fastifySwagger, {
   openapi: {
     info: {
-      title: "Bootcamp Treinos API",
-      description: "API para o bootcamp de treinos do FSC",
+      title: "Streak-Fit API",
+      description: "Streak-Fit API",
       version: "1.0.0",
     },
     servers: [
