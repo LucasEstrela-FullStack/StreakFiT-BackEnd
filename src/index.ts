@@ -49,8 +49,8 @@ await app.register(fastifyApiReference, {
   configuration: {
     sources: [
       {
-        title: "Bootcamp Treinos API",
-        slug: "bootcamp-treinos-api",
+        title: "StreakFit API",
+        slug: "streak-fit-api",
         url: "/swagger.json",
       },
       {
@@ -62,6 +62,8 @@ await app.register(fastifyApiReference, {
   },
 });
 
+// RESTful
+// Routes
 await app.register(workoutPlanRoutes, { prefix: "/workout-plans" });
 
 app.withTypeProvider<ZodTypeProvider>().route({
